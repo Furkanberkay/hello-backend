@@ -11,7 +11,11 @@ func HelloHandle(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusMethodNotAllowed)
 		return
 	}
-	fmt.Println("hello backend")
+	_, err := fmt.Fprintln(w, "Hello Backend")
+
+	if err != nil {
+		fmt.Println("response yazılamadı:", err)
+	}
 }
 
 func main() {
